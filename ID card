@@ -1,0 +1,55 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+// Structure to hold student information
+struct Student {
+    char name[50];
+    int id;
+    char department[50];
+    char collegeName[100];
+    char address[100];
+};
+
+// Function prototypes
+void getStudentDetails(struct Student *student);
+void printStudentIDCard(struct Student student);
+
+int main() {
+    struct Student student;
+
+    // Get student details from the user
+    getStudentDetails(&student);
+
+    // Print the student ID card
+    printStudentIDCard(student);
+
+    return 0;
+}
+
+// Function to get student details
+void getStudentDetails(struct Student *student) {
+    printf("Enter student name: ");
+    fgets(student->name, sizeof(student->name), stdin);
+    printf("Enter student ID: ");
+    scanf("%d", &student->id);
+    getchar(); // consume the newline character left by scanf
+    printf("Enter department: ");
+    fgets(student->department, sizeof(student->department), stdin);
+    printf("Enter college name: ");
+    fgets(student->collegeName, sizeof(student->collegeName), stdin);
+    printf("Enter address: ");
+    fgets(student->address, sizeof(student->address), stdin);
+}
+
+// Function to print student ID card
+void printStudentIDCard(struct Student student) {
+    printf("\n----------------------------------------\n");
+    printf("           College Student ID Card      \n");
+    printf("----------------------------------------\n");
+    printf("Name       : %s", student.name);
+    printf("ID         : %d\n", student.id);
+    printf("Department : %s", student.department);
+    printf("College    : %s", student.collegeName);
+    printf("Address    : %s", student.address);
+    printf("----------------------------------------\n");
+}
